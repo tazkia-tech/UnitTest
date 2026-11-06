@@ -7,6 +7,8 @@ Contoh praktik pengujian perangkat lunak untuk materi **Uji Unit dan Uji Integra
 ```
 .
 ├── app.py
+├── docs
+│   └── img            # diagram alur logika (SVG) untuk README
 ├── auth
 │   ├── __init__.py
 │   ├── logic_login_register.py
@@ -55,6 +57,34 @@ sehingga data asli di `users_db.json` tidak tersentuh. File sementara dihapus di
 >
 > Input yang **ditolak** (`False`) tetap membuat test **lulus (`ok`)** jika test memang mengharapkan `False`.
 > Semua skenario di tabel bawah ini **lulus (`ok`)** pada kode saat ini.
+
+### Alur logika dengan diagram (if else)
+
+Sebuah test berjalan dalam **2 langkah**:
+
+1. **Validator** memeriksa input lalu mengembalikan `True` (valid) atau `False` (tidak valid).
+2. **Assert** membandingkan hasil itu dengan **kunci jawaban** yang kita tulis di test → `ok` atau `FAIL`.
+
+Panah tebal berwarna = jalur yang dilalui oleh contoh input. Panah putus-putus abu-abu = jalur yang tidak dilalui.
+
+#### Langkah 1 — Validator: input diterima atau ditolak?
+
+<img src="docs/img/validate_username.svg" alt="Diagram validate_username: input ab, panjang kurang dari 3, return False" width="100%">
+
+<img src="docs/img/validate_email.svg" alt="Diagram validate_email: input test@, format tidak lengkap, return False" width="100%">
+
+<img src="docs/img/validate_password.svg" alt="Diagram validate_password: input 12345, panjang kurang dari 6, return False" width="100%">
+
+#### Langkah 2 — Assert: hasil validator cocok dengan kunci jawaban?
+
+Hasil validator untuk `"ab"` selalu `False`. Yang menentukan `ok` atau `FAIL` adalah **assert yang dipakai**:
+
+<img src="docs/img/assert_false_ok.svg" alt="Diagram assertFalse: hasil False sama dengan harapan False, test ok" width="100%">
+
+<img src="docs/img/assert_true_fail.svg" alt="Diagram assertTrue: hasil False tidak sama dengan harapan True, test FAIL" width="100%">
+
+> Kesimpulan: validator mengembalikan `False` **bukan berarti test gagal**.
+> Test baru `FAIL` jika hasil validator **berbeda** dengan kunci jawaban di assert.
 
 ### Penjelasan `assertTrue`, `assertFalse`, dan `assertEqual`
 
