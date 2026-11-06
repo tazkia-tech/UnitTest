@@ -49,40 +49,70 @@ sehingga data asli di `users_db.json` tidak tersentuh. File sementara dihapus di
 
 ## Skenario Pengujian
 
+> **Penting — bedakan dua hal ini:**
+> - **Input diterima / ditolak** → hasil dari *kode* (validator/logic) mengembalikan `True` atau `False`.
+> - **Test lulus (`ok`) / gagal (`FAIL`)** → hasil dari *test*, yaitu apakah hasil kode **sama dengan yang diharapkan**.
+>
+> Input yang **ditolak** (`False`) tetap membuat test **lulus (`ok`)** jika test memang mengharapkan `False`.
+> Semua skenario di tabel bawah ini **lulus (`ok`)** pada kode saat ini.
+
+### Penjelasan `assertTrue`, `assertFalse`, dan `assertEqual`
+
+| Assertion | Artinya | Test `ok` jika | Test `FAIL` jika | Pesan error saat FAIL |
+|---|---|---|---|---|
+| `assertTrue(x)` | "Saya yakin `x` bernilai **True**" | `x` adalah `True` | `x` adalah `False` | `AssertionError: False is not true` |
+| `assertFalse(x)` | "Saya yakin `x` bernilai **False**" | `x` adalah `False` | `x` adalah `True` | `AssertionError: True is not false` |
+| `assertEqual(a, b)` | "Saya yakin `a` **sama dengan** `b`" | `a == b` | `a != b` | `AssertionError: 'a' != 'b'` |
+
+Contoh:
+
+```python
+self.assertTrue(validate_username("uwais_alqarni"))  # validator → True,  harapan True  → ok
+self.assertFalse(validate_username("ab"))            # validator → False, harapan False → ok
+self.assertTrue(validate_username("ab"))             # validator → False, harapan True  → FAIL (False is not true)
+self.assertFalse(validate_username("uwais_alqarni")) # validator → True,  harapan False → FAIL (True is not false)
+```
+
+Aturan praktis:
+- Pakai **`assertTrue`** untuk menguji input yang **valid** (harus diterima).
+- Pakai **`assertFalse`** untuk menguji input yang **tidak valid** (harus ditolak).
+- Pakai **`assertEqual`** untuk mencocokkan nilai persis, misalnya pesan error.
+
+> Catatan: jika satu assertion di sebuah method gagal, assertion **di bawahnya dalam method yang sama tidak dijalankan**.
+
 ### Unit test — `tests/test_validation.py`
 
 Menguji fungsi di `auth/validators.py` secara terpisah (tanpa file JSON, tanpa Flask).
 
-| Fungsi | Input | Hasil yang diharapkan | Jenis skenario |
-|---|---|---|---|
-| `validate_username` | `"uwais_alqarni"` | `True` | ✅ Sukses |
-| `validate_username` | `"ab"` (2 karakter) | `False` | ❌ Gagal — terlalu pendek |
-| `validate_username` | `"a" * 21` (21 karakter) | `False` | ❌ Gagal — terlalu panjang |
-| `validate_username` | `123` (bukan string) | `False` | ❌ Gagal — tipe data salah |
-| `validate_email` | `"test@example.com"` | `True` | ✅ Sukses |
-| `validate_email` | `"invalid-email"` | `False` | ❌ Gagal — tanpa `@` |
-| `validate_email` | `"test@"` | `False` | ❌ Gagal — tanpa domain |
-| `validate_email` | `123` | `False` | ❌ Gagal — tipe data salah |
-| `validate_password` | `"123456"` | `True` | ✅ Sukses |
-| `validate_password` | `"12345"` (5 karakter) | `False` | ❌ Gagal — kurang dari 6 karakter |
-| `validate_password` | `""` | `False` | ❌ Gagal — kosong |
-| `validate_password` | `123` | `False` | ❌ Gagal — tipe data salah |
-
-> Skenario "gagal" di atas artinya **input ditolak oleh validator**. Test-nya sendiri tetap **lulus (ok)**,
-> karena memang itu perilaku yang diharapkan (`assertFalse`).
+| Fungsi | Input | Assertion | Hasil validator | Keterangan input | Status test |
+|---|---|---|---|---|---|
+| `validate_username` | `"uwais_alqarni"` | `assertTrue` | `True` | ✅ Diterima — 13 karakter | `ok` |
+| `validate_username` | `"ab"` | `assertFalse` | `False` | 🚫 Ditolak — terlalu pendek (< 3) | `ok` |
+| `validate_username` | `"a" * 21` | `assertFalse` | `False` | 🚫 Ditolak — terlalu panjang (> 20) | `ok` |
+| `validate_username` | `123` | `assertFalse` | `False` | 🚫 Ditolak — bukan string | `ok` |
+| `validate_email` | `"test@example.com"` | `assertTrue` | `True` | ✅ Diterima — format benar | `ok` |
+| `validate_email` | `"invalid-email"` | `assertFalse` | `False` | 🚫 Ditolak — tanpa `@` | `ok` |
+| `validate_email` | `"test@"` | `assertFalse` | `False` | 🚫 Ditolak — tanpa domain | `ok` |
+| `validate_email` | `123` | `assertFalse` | `False` | 🚫 Ditolak — bukan string | `ok` |
+| `validate_password` | `"123456"` | `assertTrue` | `True` | ✅ Diterima — 6 karakter | `ok` |
+| `validate_password` | `"12345"` | `assertFalse` | `False` | 🚫 Ditolak — kurang dari 6 karakter | `ok` |
+| `validate_password` | `""` | `assertFalse` | `False` | 🚫 Ditolak — kosong | `ok` |
+| `validate_password` | `123` | `assertFalse` | `False` | 🚫 Ditolak — bukan string | `ok` |
 
 ### Integration test — `tests/test_auth_logic.py`
 
 Menguji `auth/logic_login_register.py` bersama validator dan file JSON.
+Fungsi mengembalikan pasangan `(success, message)`, dicek dengan `assertTrue`/`assertFalse` untuk `success`
+dan `assertEqual` untuk `message`.
 
-| Test | Langkah | Hasil yang diharapkan | Jenis skenario |
-|---|---|---|---|
-| `test_register_success` | Register `alice` / `alice@example.com` / `123456` | `(True, "Registrasi berhasil")` | ✅ Sukses |
-| `test_register_duplicate_username` | Register `bob`, lalu register `bob` lagi dengan email lain | `(False, "Username sudah terdaftar")` | ❌ Gagal — username duplikat |
-| `test_register_duplicate_email` | Register `charlie`, lalu `dave` dengan email yang sama | `(False, "Email sudah digunakan")` | ❌ Gagal — email duplikat |
-| `test_login_success` | Register `eve`, lalu login `eve` / `123456` | `(True, "Login berhasil")` | ✅ Sukses |
-| `test_login_wrong_password` | Register `frank`, lalu login dengan `wrongpass` | `(False, "Password salah")` | ❌ Gagal — password salah |
-| `test_login_user_not_found` | Login `nonexistent` tanpa register | `(False, "Username atau email tidak ditemukan")` | ❌ Gagal — user tidak ada |
+| Test | Langkah | Assertion | Hasil yang diharapkan | Keterangan | Status test |
+|---|---|---|---|---|---|
+| `test_register_success` | Register `alice` / `alice@example.com` / `123456` | `assertTrue` + `assertEqual` | `(True, "Registrasi berhasil")` | ✅ Register diterima | `ok` |
+| `test_register_duplicate_username` | Register `bob`, lalu `bob` lagi dengan email lain | `assertFalse` + `assertEqual` | `(False, "Username sudah terdaftar")` | 🚫 Ditolak — username duplikat | `ok` |
+| `test_register_duplicate_email` | Register `charlie`, lalu `dave` dengan email sama | `assertFalse` + `assertEqual` | `(False, "Email sudah digunakan")` | 🚫 Ditolak — email duplikat | `ok` |
+| `test_login_success` | Register `eve`, lalu login `eve` / `123456` | `assertTrue` + `assertEqual` | `(True, "Login berhasil")` | ✅ Login diterima | `ok` |
+| `test_login_wrong_password` | Register `frank`, lalu login dengan `wrongpass` | `assertFalse` + `assertEqual` | `(False, "Password salah")` | 🚫 Ditolak — password salah | `ok` |
+| `test_login_user_not_found` | Login `nonexistent` tanpa register | `assertFalse` + `assertEqual` | `(False, "Username atau email tidak ditemukan")` | 🚫 Ditolak — user tidak ada | `ok` |
 
 ### Contoh output saat semua test lulus
 
