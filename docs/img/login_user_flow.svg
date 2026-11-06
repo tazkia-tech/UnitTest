@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<defs><marker id="mblue" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#3B6FD8"/></marker><marker id="mgreen" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#3E9B2F"/></marker><marker id="mred" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#C9302C"/></marker><marker id="mgrey" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#9AA3B2"/></marker></defs>
+<rect x="2" y="2" width="956" height="716" rx="14" fill="#FFFFFF" stroke="#C9D3E6" stroke-width="2"/>
+<path d="M2,16 a14,14 0 0 1 14,-14 h928 a14,14 0 0 1 14,14 v50 h-956 z" fill="#2B4C9B"/>
+<text x="28" y="46" font-size="24" font-weight="700" fill="#FFFFFF">7. login_user — logika if else &amp; test yang menguji</text>
+<rect x="40" y="84" width="320" height="46" rx="12" fill="#EEF3FC" stroke="#3B6FD8" stroke-width="2.5"/>
+<text x="200.0" y="112.0" font-size="14" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#1C2B4A" text-anchor="middle">login_user(identifier, password)</text>
+<line x1="200" y1="130" x2="200" y2="146" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
+<polygon points="35,200 200,148 365,200 200,252" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
+<text x="200" y="195" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">identifier ada di</text>
+<text x="200" y="217" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">daftar username?</text>
+<line x1="365" y1="200" x2="418" y2="200" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
+<text x="391" y="190" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="middle">Ya</text>
+<polygon points="425,200 560,148 695,200 560,252" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
+<text x="560" y="195" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">password</text>
+<text x="560" y="217" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">cocok?</text>
+<line x1="695" y1="200" x2="740" y2="200" stroke="#3E9B2F" stroke-width="4" marker-end="url(#mgreen)"/>
+<text x="717" y="190" font-size="16" font-weight="700" fill="#3E9B2F" text-anchor="middle">Ya</text>
+<rect x="750" y="160" width="190" height="80" rx="12" fill="#E3F4DD" stroke="#5DAE4B" stroke-width="2.5"/>
+<text x="845.0" y="194.5" font-size="12" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#1F4D17" text-anchor="middle">True, &quot;Login berhasil&quot;</text>
+<text x="845.0" y="215.5" font-size="13" font-weight="700" fill="#1F4D17" text-anchor="middle">✔ test_login_success</text>
+<line x1="560" y1="252" x2="560" y2="288" stroke="#C9302C" stroke-width="4" marker-end="url(#mred)"/>
+<text x="572" y="278" font-size="16" font-weight="700" fill="#C9302C" text-anchor="start">Tidak</text>
+<rect x="430" y="298" width="260" height="70" rx="12" fill="#FBE3E3" stroke="#D9534F" stroke-width="2.5"/>
+<text x="560.0" y="327.5" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#7A1C19" text-anchor="middle">False, &quot;Password salah&quot;</text>
+<text x="560.0" y="348.5" font-size="13" font-weight="700" fill="#7A1C19" text-anchor="middle">✔ test_login_wrong_password</text>
+<line x1="200" y1="252" x2="200" y2="372" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
+<text x="212" y="320" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="start">Tidak</text>
+<polygon points="35,425 200,373 365,425 200,477" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
+<text x="200" y="420" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">identifier = email</text>
+<text x="200" y="442" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">salah satu user?</text>
+<line x1="365" y1="425" x2="418" y2="425" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
+<text x="391" y="415" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="middle">Ya</text>
+<polygon points="425,425 560,373 695,425 560,477" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
+<text x="560" y="420" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">password</text>
+<text x="560" y="442" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">cocok?</text>
+<line x1="695" y1="425" x2="740" y2="425" stroke="#9AA3B2" stroke-width="4" marker-end="url(#mgrey)"/>
+<text x="717" y="415" font-size="16" font-weight="700" fill="#9AA3B2" text-anchor="middle">Ya</text>
+<rect x="750" y="385" width="190" height="80" rx="12" fill="#F3F5F8" stroke="#9AA3B2" stroke-width="2.5" stroke-dasharray="8 6"/>
+<text x="845.0" y="409.0" font-size="12" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#5A6372" text-anchor="middle">True, &quot;Login berhasil&quot;</text>
+<text x="845.0" y="430.0" font-size="13" font-weight="700" fill="#5A6372" text-anchor="middle">⚠ belum ada test</text>
+<text x="845.0" y="451.0" font-size="12" fill="#5A6372" text-anchor="middle">(login via email)</text>
+<line x1="560" y1="477" x2="560" y2="513" stroke="#9AA3B2" stroke-width="4" marker-end="url(#mgrey)"/>
+<text x="572" y="503" font-size="16" font-weight="700" fill="#9AA3B2" text-anchor="start">Tidak</text>
+<rect x="430" y="523" width="260" height="80" rx="12" fill="#F3F5F8" stroke="#9AA3B2" stroke-width="2.5" stroke-dasharray="8 6"/>
+<text x="560.0" y="547.0" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#5A6372" text-anchor="middle">False, &quot;Password salah&quot;</text>
+<text x="560.0" y="568.0" font-size="13" font-weight="700" fill="#5A6372" text-anchor="middle">⚠ belum ada test</text>
+<text x="560.0" y="589.0" font-size="12" fill="#5A6372" text-anchor="middle">(email benar, password salah)</text>
+<line x1="200" y1="477" x2="200" y2="513" stroke="#C9302C" stroke-width="4" marker-end="url(#mred)"/>
+<text x="212" y="503" font-size="16" font-weight="700" fill="#C9302C" text-anchor="start">Tidak</text>
+<rect x="30" y="523" width="340" height="80" rx="12" fill="#FBE3E3" stroke="#D9534F" stroke-width="2.5"/>
+<text x="200.0" y="547.0" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#7A1C19" text-anchor="middle">False, &quot;Username atau email</text>
+<text x="200.0" y="568.0" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#7A1C19" text-anchor="middle">tidak ditemukan&quot;</text>
+<text x="200.0" y="589.0" font-size="13" font-weight="700" fill="#7A1C19" text-anchor="middle">✔ test_login_user_not_found</text>
+<rect x="40" y="630" width="30" height="18" rx="4" fill="#E3F4DD" stroke="#5DAE4B" stroke-width="2"/>
+<text x="80" y="644" font-size="14" fill="#1C2B4A">dites — hasil True</text>
+<rect x="40" y="656" width="30" height="18" rx="4" fill="#FBE3E3" stroke="#D9534F" stroke-width="2"/>
+<text x="80" y="670" font-size="14" fill="#1C2B4A">dites — hasil False</text>
+<rect x="40" y="682" width="30" height="18" rx="4" fill="#F3F5F8" stroke="#9AA3B2" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="80" y="696" font-size="14" fill="#1C2B4A">jalur belum ada test-nya</text>
+<text x="430" y="650" font-size="14" fill="#5A6372">Catatan: login_user tidak memanggil validator,</text>
+<text x="430" y="672" font-size="14" fill="#5A6372">jadi tidak ada cek format di sini.</text>
+</svg>

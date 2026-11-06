@@ -144,6 +144,31 @@ dan `assertEqual` untuk `message`.
 | `test_login_wrong_password` | Register `frank`, lalu login dengan `wrongpass` | `assertFalse` + `assertEqual` | `(False, "Password salah")` | 🚫 Ditolak — password salah | `ok` |
 | `test_login_user_not_found` | Login `nonexistent` tanpa register | `assertFalse` + `assertEqual` | `(False, "Username atau email tidak ditemukan")` | 🚫 Ditolak — user tidak ada | `ok` |
 
+#### Alur logika `register_user` dan `login_user` (if else)
+
+Setiap kotak hasil diberi nama **test yang menguji jalur itu**.
+Kotak abu-abu putus-putus (⚠) = jalur yang ada di kode tetapi **belum ada test-nya**.
+
+<img src="docs/img/register_user_flow.svg" alt="Diagram register_user: cek username, email, password, username duplikat, email duplikat, lalu simpan; tiap jalur diberi nama test" width="100%">
+
+Cara membaca: `register_user("bob", "another@example.com", "123456")` pada `test_register_duplicate_username`
+lolos 3 cek validasi (Ya, Ya, Ya) → "Username sudah ada?" **Ya** → `False, "Username sudah terdaftar"`.
+
+<img src="docs/img/login_user_flow.svg" alt="Diagram login_user: cek username lalu password, jika tidak cek email lalu password, jika tidak ditemukan return False" width="100%">
+
+Cara membaca: `login_user("frank", "wrongpass")` pada `test_login_wrong_password`
+→ "identifier ada di daftar username?" **Ya** → "password cocok?" **Tidak** → `False, "Password salah"`.
+
+**Jalur yang belum dites** (ada di kode, tapi belum ada test-nya):
+
+| Fungsi | Jalur | Hasil di kode |
+|---|---|---|
+| `register_user` | username tidak valid | `False, "Username harus 3-20 karakter"` |
+| `register_user` | email tidak valid | `False, "Format email tidak valid"` |
+| `register_user` | password tidak valid | `False, "Password minimal 6 karakter"` |
+| `login_user` | login pakai **email**, password benar | `True, "Login berhasil"` |
+| `login_user` | login pakai **email**, password salah | `False, "Password salah"` |
+
 ### Contoh output saat semua test lulus
 
 ```

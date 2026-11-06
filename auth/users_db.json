@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "email": "admin@example.com",
+    "password": "admin123"
+  },
+  "john_doe": {
+    "email": "test1@example.com",
+    "password": "test123"
+  },
+  "alice_w": {
+    "email": "test2@example.com",
+    "password": "securepass"
+  }
+}
