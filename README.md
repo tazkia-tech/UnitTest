@@ -65,23 +65,28 @@ Sebuah test berjalan dalam **2 langkah**:
 1. **Validator** memeriksa input lalu mengembalikan `True` (valid) atau `False` (tidak valid).
 2. **Assert** membandingkan hasil itu dengan **kunci jawaban** yang kita tulis di test → `ok` atau `FAIL`.
 
-Panah tebal berwarna = jalur yang dilalui oleh contoh input. Panah putus-putus abu-abu = jalur yang tidak dilalui.
-
 #### Langkah 1 — Validator: input diterima atau ditolak?
 
-<img src="docs/img/validate_username.svg" alt="Diagram validate_username: input ab, panjang kurang dari 3, return False" width="100%">
+<img src="docs/img/validate_username.svg" alt="Flowchart validate_username">
 
-<img src="docs/img/validate_email.svg" alt="Diagram validate_email: input test@, format tidak lengkap, return False" width="100%">
+Contoh: `"ab"` panjangnya 2, tidak memenuhi 3–20 → **Tidak** → `return False`.
 
-<img src="docs/img/validate_password.svg" alt="Diagram validate_password: input 12345, panjang kurang dari 6, return False" width="100%">
+<img src="docs/img/validate_email.svg" alt="Flowchart validate_email">
+
+Contoh: `"test@"` tidak punya domain dan ekstensi → **Tidak** → `return False`.
+
+<img src="docs/img/validate_password.svg" alt="Flowchart validate_password">
+
+Contoh: `"12345"` panjangnya 5, kurang dari 6 → **Tidak** → `return False`.
 
 #### Langkah 2 — Assert: hasil validator cocok dengan kunci jawaban?
 
 Hasil validator untuk `"ab"` selalu `False`. Yang menentukan `ok` atau `FAIL` adalah **assert yang dipakai**:
 
-<img src="docs/img/assert_false_ok.svg" alt="Diagram assertFalse: hasil False sama dengan harapan False, test ok" width="100%">
+<img src="docs/img/assert_flow.svg" alt="Flowchart assertTrue dan assertFalse">
 
-<img src="docs/img/assert_true_fail.svg" alt="Diagram assertTrue: hasil False tidak sama dengan harapan True, test FAIL" width="100%">
+- `assertFalse(validate_username("ab"))` → hasil `False` → "hasil == False?" **Ya** → `ok`
+- `assertTrue(validate_username("ab"))` → hasil `False` → "hasil == True?" **Tidak** → `FAIL: False is not true`
 
 > Kesimpulan: validator mengembalikan `False` **bukan berarti test gagal**.
 > Test baru `FAIL` jika hasil validator **berbeda** dengan kunci jawaban di assert.
@@ -116,18 +121,18 @@ Menguji fungsi di `auth/validators.py` secara terpisah (tanpa file JSON, tanpa F
 
 | Fungsi | Input | Assertion | Hasil validator | Keterangan input | Status test |
 |---|---|---|---|---|---|
-| `validate_username` | `"uwais_alqarni"` | `assertTrue` | `True` | ✅ Diterima — 13 karakter | `ok` |
-| `validate_username` | `"ab"` | `assertFalse` | `False` | 🚫 Ditolak — terlalu pendek (< 3) | `ok` |
-| `validate_username` | `"a" * 21` | `assertFalse` | `False` | 🚫 Ditolak — terlalu panjang (> 20) | `ok` |
-| `validate_username` | `123` | `assertFalse` | `False` | 🚫 Ditolak — bukan string | `ok` |
-| `validate_email` | `"test@example.com"` | `assertTrue` | `True` | ✅ Diterima — format benar | `ok` |
-| `validate_email` | `"invalid-email"` | `assertFalse` | `False` | 🚫 Ditolak — tanpa `@` | `ok` |
-| `validate_email` | `"test@"` | `assertFalse` | `False` | 🚫 Ditolak — tanpa domain | `ok` |
-| `validate_email` | `123` | `assertFalse` | `False` | 🚫 Ditolak — bukan string | `ok` |
-| `validate_password` | `"123456"` | `assertTrue` | `True` | ✅ Diterima — 6 karakter | `ok` |
-| `validate_password` | `"12345"` | `assertFalse` | `False` | 🚫 Ditolak — kurang dari 6 karakter | `ok` |
-| `validate_password` | `""` | `assertFalse` | `False` | 🚫 Ditolak — kosong | `ok` |
-| `validate_password` | `123` | `assertFalse` | `False` | 🚫 Ditolak — bukan string | `ok` |
+| `validate_username` | `"uwais_alqarni"` | `assertTrue` | `True` | Diterima — 13 karakter | `ok` |
+| `validate_username` | `"ab"` | `assertFalse` | `False` | Ditolak — terlalu pendek (< 3) | `ok` |
+| `validate_username` | `"a" * 21` | `assertFalse` | `False` | Ditolak — terlalu panjang (> 20) | `ok` |
+| `validate_username` | `123` | `assertFalse` | `False` | Ditolak — bukan string | `ok` |
+| `validate_email` | `"test@example.com"` | `assertTrue` | `True` | Diterima — format benar | `ok` |
+| `validate_email` | `"invalid-email"` | `assertFalse` | `False` | Ditolak — tanpa `@` | `ok` |
+| `validate_email` | `"test@"` | `assertFalse` | `False` | Ditolak — tanpa domain | `ok` |
+| `validate_email` | `123` | `assertFalse` | `False` | Ditolak — bukan string | `ok` |
+| `validate_password` | `"123456"` | `assertTrue` | `True` | Diterima — 6 karakter | `ok` |
+| `validate_password` | `"12345"` | `assertFalse` | `False` | Ditolak — kurang dari 6 karakter | `ok` |
+| `validate_password` | `""` | `assertFalse` | `False` | Ditolak — kosong | `ok` |
+| `validate_password` | `123` | `assertFalse` | `False` | Ditolak — bukan string | `ok` |
 
 ### Integration test — `tests/test_auth_logic.py`
 
@@ -137,24 +142,24 @@ dan `assertEqual` untuk `message`.
 
 | Test | Langkah | Assertion | Hasil yang diharapkan | Keterangan | Status test |
 |---|---|---|---|---|---|
-| `test_register_success` | Register `alice` / `alice@example.com` / `123456` | `assertTrue` + `assertEqual` | `(True, "Registrasi berhasil")` | ✅ Register diterima | `ok` |
-| `test_register_duplicate_username` | Register `bob`, lalu `bob` lagi dengan email lain | `assertFalse` + `assertEqual` | `(False, "Username sudah terdaftar")` | 🚫 Ditolak — username duplikat | `ok` |
-| `test_register_duplicate_email` | Register `charlie`, lalu `dave` dengan email sama | `assertFalse` + `assertEqual` | `(False, "Email sudah digunakan")` | 🚫 Ditolak — email duplikat | `ok` |
-| `test_login_success` | Register `eve`, lalu login `eve` / `123456` | `assertTrue` + `assertEqual` | `(True, "Login berhasil")` | ✅ Login diterima | `ok` |
-| `test_login_wrong_password` | Register `frank`, lalu login dengan `wrongpass` | `assertFalse` + `assertEqual` | `(False, "Password salah")` | 🚫 Ditolak — password salah | `ok` |
-| `test_login_user_not_found` | Login `nonexistent` tanpa register | `assertFalse` + `assertEqual` | `(False, "Username atau email tidak ditemukan")` | 🚫 Ditolak — user tidak ada | `ok` |
+| `test_register_success` | Register `alice` / `alice@example.com` / `123456` | `assertTrue` + `assertEqual` | `(True, "Registrasi berhasil")` | Register diterima | `ok` |
+| `test_register_duplicate_username` | Register `bob`, lalu `bob` lagi dengan email lain | `assertFalse` + `assertEqual` | `(False, "Username sudah terdaftar")` | Ditolak — username duplikat | `ok` |
+| `test_register_duplicate_email` | Register `charlie`, lalu `dave` dengan email sama | `assertFalse` + `assertEqual` | `(False, "Email sudah digunakan")` | Ditolak — email duplikat | `ok` |
+| `test_login_success` | Register `eve`, lalu login `eve` / `123456` | `assertTrue` + `assertEqual` | `(True, "Login berhasil")` | Login diterima | `ok` |
+| `test_login_wrong_password` | Register `frank`, lalu login dengan `wrongpass` | `assertFalse` + `assertEqual` | `(False, "Password salah")` | Ditolak — password salah | `ok` |
+| `test_login_user_not_found` | Login `nonexistent` tanpa register | `assertFalse` + `assertEqual` | `(False, "Username atau email tidak ditemukan")` | Ditolak — user tidak ada | `ok` |
 
 #### Alur logika `register_user` dan `login_user` (if else)
 
-Setiap kotak hasil diberi nama **test yang menguji jalur itu**.
-Kotak abu-abu putus-putus (⚠) = jalur yang ada di kode tetapi **belum ada test-nya**.
+Di bawah setiap hasil `return` tertulis nama test yang menguji jalur tersebut.
+Tulisan "belum ada test" berarti jalur itu ada di kode, tetapi belum diuji.
 
-<img src="docs/img/register_user_flow.svg" alt="Diagram register_user: cek username, email, password, username duplikat, email duplikat, lalu simpan; tiap jalur diberi nama test" width="100%">
+<img src="docs/img/register_user_flow.svg" alt="Flowchart register_user">
 
 Cara membaca: `register_user("bob", "another@example.com", "123456")` pada `test_register_duplicate_username`
 lolos 3 cek validasi (Ya, Ya, Ya) → "Username sudah ada?" **Ya** → `False, "Username sudah terdaftar"`.
 
-<img src="docs/img/login_user_flow.svg" alt="Diagram login_user: cek username lalu password, jika tidak cek email lalu password, jika tidak ditemukan return False" width="100%">
+<img src="docs/img/login_user_flow.svg" alt="Flowchart login_user">
 
 Cara membaca: `login_user("frank", "wrongpass")` pada `test_login_wrong_password`
 → "identifier ada di daftar username?" **Ya** → "password cocok?" **Tidak** → `False, "Password salah"`.
@@ -291,7 +296,7 @@ Setelah test selesai, `DB_PATH` otomatis kembali ke `users_db.json`.
 | `python3 app.py` | `users_db.json` | data asli (`admin`, `john_doe`, `alice_w`) |
 | Integration test (dengan `@patch`) | `test_users_db.json` | data test sementara, dihapus setelah test |
 
-<img src="docs/img/test_db_patch.svg" alt="Diagram: dengan @patch test memakai test_users_db.json dan selalu OK; tanpa @patch data masuk ke users_db.json dan run kedua FAIL" width="100%">
+<img src="docs/img/test_db_patch.svg" alt="Flowchart pengaruh @patch DB_PATH">
 
 **Cara simulasi** (backup dulu `users_db.json`, karena simulasi ini akan mengubah isinya):
 

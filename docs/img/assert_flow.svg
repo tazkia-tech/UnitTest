@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="330" viewBox="0 0 740 330" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,4 L0,8 z" fill="#000"/></marker></defs>
+<rect width="740" height="330" fill="#fff"/>
+<rect x="85.0" y="20.0" width="200" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="185" y="45.0" font-size="14" text-anchor="middle">assertTrue(hasil)</text>
+<polyline points="185,60 185,90" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<polygon points="75,135 185,90 295,135 185,180" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="185" y="140.0" font-size="14" text-anchor="middle">hasil == True?</text>
+<polyline points="75,135 75,220" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="67" y="180" font-size="13" text-anchor="end">Ya</text>
+<rect x="10.0" y="220.0" width="130" height="44" rx="22.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="75" y="238.5" font-size="14" text-anchor="middle">ok</text>
+<text x="75" y="255.5" font-size="14" text-anchor="middle">(test lulus)</text>
+<polyline points="295,135 295,220" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="303" y="180" font-size="13" text-anchor="start">Tidak</text>
+<rect x="220.0" y="220.0" width="150" height="44" rx="22.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="295" y="238.5" font-size="13" text-anchor="middle">FAIL</text>
+<text x="295" y="255.5" font-size="13" text-anchor="middle">False is not true</text>
+<rect x="455.0" y="20.0" width="200" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="555" y="45.0" font-size="14" text-anchor="middle">assertFalse(hasil)</text>
+<polyline points="555,60 555,90" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<polygon points="445,135 555,90 665,135 555,180" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="555" y="140.0" font-size="14" text-anchor="middle">hasil == False?</text>
+<polyline points="445,135 445,220" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="437" y="180" font-size="13" text-anchor="end">Ya</text>
+<rect x="380.0" y="220.0" width="130" height="44" rx="22.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="445" y="238.5" font-size="14" text-anchor="middle">ok</text>
+<text x="445" y="255.5" font-size="14" text-anchor="middle">(test lulus)</text>
+<polyline points="665,135 665,220" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="673" y="180" font-size="13" text-anchor="start">Tidak</text>
+<rect x="590.0" y="220.0" width="150" height="44" rx="22.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="665" y="238.5" font-size="13" text-anchor="middle">FAIL</text>
+<text x="665" y="255.5" font-size="13" text-anchor="middle">True is not false</text>
+<line x1="370" y1="20" x2="370" y2="280" stroke="#999" stroke-dasharray="4 4"/>
+<text x="370.0" y="312" font-size="13" text-anchor="middle">Gambar 4. Cara kerja assertTrue dan assertFalse</text>
+</svg>

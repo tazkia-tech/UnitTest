@@ -1,69 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="840" viewBox="0 0 960 840" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
-<defs><marker id="mblue" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#3B6FD8"/></marker><marker id="mgreen" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#3E9B2F"/></marker><marker id="mred" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#C9302C"/></marker><marker id="mgrey" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#9AA3B2"/></marker></defs>
-<rect x="2" y="2" width="956" height="836" rx="14" fill="#FFFFFF" stroke="#C9D3E6" stroke-width="2"/>
-<path d="M2,16 a14,14 0 0 1 14,-14 h928 a14,14 0 0 1 14,14 v50 h-956 z" fill="#2B4C9B"/>
-<text x="28" y="46" font-size="24" font-weight="700" fill="#FFFFFF">6. register_user — logika if else &amp; test yang menguji</text>
-<rect x="130" y="84" width="340" height="46" rx="12" fill="#EEF3FC" stroke="#3B6FD8" stroke-width="2.5"/>
-<text x="300.0" y="112.0" font-size="14" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#1C2B4A" text-anchor="middle">register_user(username, email, password)</text>
-<line x1="300" y1="130" x2="300" y2="146" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
-<polygon points="140,195 300,149 460,195 300,241" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
-<text x="300" y="190" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">Username valid?</text>
-<text x="300" y="212" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">(string, 3–20 karakter)</text>
-<line x1="460" y1="195" x2="532" y2="195" stroke="#9AA3B2" stroke-width="4" marker-end="url(#mgrey)"/>
-<text x="496" y="185" font-size="16" font-weight="700" fill="#9AA3B2" text-anchor="middle">Tidak</text>
-<rect x="545" y="155" width="395" height="80" rx="12" fill="#F3F5F8" stroke="#9AA3B2" stroke-width="2.5" stroke-dasharray="8 6"/>
-<text x="742.5" y="189.5" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#5A6372" text-anchor="middle">return False, &quot;Username harus 3-20 karakter&quot;</text>
-<text x="742.5" y="210.5" font-size="13" font-weight="700" fill="#5A6372" text-anchor="middle">⚠ belum ada test</text>
-<line x1="300" y1="241" x2="300" y2="261" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
-<text x="312" y="258" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="start">Ya</text>
-<polygon points="140,310 300,264 460,310 300,356" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
-<text x="300" y="305" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">Email valid?</text>
-<text x="300" y="327" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">(format nama@domain.ext)</text>
-<line x1="460" y1="310" x2="532" y2="310" stroke="#9AA3B2" stroke-width="4" marker-end="url(#mgrey)"/>
-<text x="496" y="300" font-size="16" font-weight="700" fill="#9AA3B2" text-anchor="middle">Tidak</text>
-<rect x="545" y="270" width="395" height="80" rx="12" fill="#F3F5F8" stroke="#9AA3B2" stroke-width="2.5" stroke-dasharray="8 6"/>
-<text x="742.5" y="304.5" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#5A6372" text-anchor="middle">return False, &quot;Format email tidak valid&quot;</text>
-<text x="742.5" y="325.5" font-size="13" font-weight="700" fill="#5A6372" text-anchor="middle">⚠ belum ada test</text>
-<line x1="300" y1="356" x2="300" y2="376" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
-<text x="312" y="373" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="start">Ya</text>
-<polygon points="140,425 300,379 460,425 300,471" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
-<text x="300" y="420" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">Password valid?</text>
-<text x="300" y="442" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">(string, minimal 6)</text>
-<line x1="460" y1="425" x2="532" y2="425" stroke="#9AA3B2" stroke-width="4" marker-end="url(#mgrey)"/>
-<text x="496" y="415" font-size="16" font-weight="700" fill="#9AA3B2" text-anchor="middle">Tidak</text>
-<rect x="545" y="385" width="395" height="80" rx="12" fill="#F3F5F8" stroke="#9AA3B2" stroke-width="2.5" stroke-dasharray="8 6"/>
-<text x="742.5" y="419.5" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#5A6372" text-anchor="middle">return False, &quot;Password minimal 6 karakter&quot;</text>
-<text x="742.5" y="440.5" font-size="13" font-weight="700" fill="#5A6372" text-anchor="middle">⚠ belum ada test</text>
-<line x1="300" y1="471" x2="300" y2="491" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
-<text x="312" y="488" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="start">Ya</text>
-<polygon points="140,540 300,494 460,540 300,586" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
-<text x="300" y="535" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">Username sudah</text>
-<text x="300" y="557" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">ada di database?</text>
-<line x1="460" y1="540" x2="532" y2="540" stroke="#C9302C" stroke-width="4" marker-end="url(#mred)"/>
-<text x="496" y="530" font-size="16" font-weight="700" fill="#C9302C" text-anchor="middle">Ya</text>
-<rect x="545" y="500" width="395" height="80" rx="12" fill="#FBE3E3" stroke="#D9534F" stroke-width="2.5"/>
-<text x="742.5" y="534.5" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#7A1C19" text-anchor="middle">return False, &quot;Username sudah terdaftar&quot;</text>
-<text x="742.5" y="555.5" font-size="13" font-weight="700" fill="#7A1C19" text-anchor="middle">✔ test_register_duplicate_username</text>
-<line x1="300" y1="586" x2="300" y2="606" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
-<text x="312" y="603" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="start">Tidak</text>
-<polygon points="140,655 300,609 460,655 300,701" fill="#DCE8FB" stroke="#3B6FD8" stroke-width="2.5"/>
-<text x="300" y="650" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">Email sudah dipakai</text>
-<text x="300" y="672" font-size="16" font-weight="700" fill="#1C2B4A" text-anchor="middle">user lain?</text>
-<line x1="460" y1="655" x2="532" y2="655" stroke="#C9302C" stroke-width="4" marker-end="url(#mred)"/>
-<text x="496" y="645" font-size="16" font-weight="700" fill="#C9302C" text-anchor="middle">Ya</text>
-<rect x="545" y="615" width="395" height="80" rx="12" fill="#FBE3E3" stroke="#D9534F" stroke-width="2.5"/>
-<text x="742.5" y="649.5" font-size="13" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#7A1C19" text-anchor="middle">return False, &quot;Email sudah digunakan&quot;</text>
-<text x="742.5" y="670.5" font-size="13" font-weight="700" fill="#7A1C19" text-anchor="middle">✔ test_register_duplicate_email</text>
-<line x1="300" y1="701" x2="300" y2="721" stroke="#3B6FD8" stroke-width="4" marker-end="url(#mblue)"/>
-<text x="312" y="718" font-size="16" font-weight="700" fill="#3B6FD8" text-anchor="start">Tidak</text>
-<rect x="60" y="725" width="480" height="90" rx="12" fill="#E3F4DD" stroke="#5DAE4B" stroke-width="2.5"/>
-<text x="300.0" y="754.0" font-size="13" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#1F4D17" text-anchor="middle">save_users(users)  → tulis ke file JSON</text>
-<text x="300.0" y="775.0" font-size="14" font-weight="700" font-family="Menlo, Consolas, 'Courier New', monospace" fill="#1F4D17" text-anchor="middle">return True, &quot;Registrasi berhasil&quot;</text>
-<text x="300.0" y="796.0" font-size="13" font-weight="700" fill="#1F4D17" text-anchor="middle">✔ test_register_success</text>
-<rect x="600" y="737" width="30" height="18" rx="4" fill="#E3F4DD" stroke="#5DAE4B" stroke-width="2"/>
-<text x="640" y="751" font-size="14" fill="#1C2B4A">dites — hasil True</text>
-<rect x="600" y="763" width="30" height="18" rx="4" fill="#FBE3E3" stroke="#D9534F" stroke-width="2"/>
-<text x="640" y="777" font-size="14" fill="#1C2B4A">dites — hasil False</text>
-<rect x="600" y="789" width="30" height="18" rx="4" fill="#F3F5F8" stroke="#9AA3B2" stroke-width="2" stroke-dasharray="8 6"/>
-<text x="640" y="803" font-size="14" fill="#1C2B4A">jalur belum ada test-nya</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="825" viewBox="0 0 760 825" font-family="Arial, Helvetica, sans-serif" font-size="14">
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,4 L0,8 z" fill="#000"/></marker></defs>
+<rect width="760" height="825" fill="#fff"/>
+<rect x="55.0" y="20.0" width="330" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="45.0" font-size="14" text-anchor="middle">register_user(username, email, password)</text>
+<polyline points="220,60 220,85" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<polygon points="70,130 220,85 370,130 220,175" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="135.0" font-size="14" text-anchor="middle">username valid?</text>
+<polyline points="370,130 418,130" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="394" y="123" font-size="13" text-anchor="middle">Tidak</text>
+<rect x="420.0" y="110.0" width="320" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="580" y="135.0" font-size="13" text-anchor="middle">return False, &quot;Username harus 3-20 karakter&quot;</text>
+<text x="580" y="166" font-size="12" font-style="italic" fill="#444" text-anchor="middle">belum ada test</text>
+<polyline points="220,175 220,195" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="228" y="191" font-size="13" text-anchor="start">Ya</text>
+<polygon points="70,240 220,195 370,240 220,285" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="245.0" font-size="14" text-anchor="middle">email valid?</text>
+<polyline points="370,240 418,240" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="394" y="233" font-size="13" text-anchor="middle">Tidak</text>
+<rect x="420.0" y="220.0" width="320" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="580" y="245.0" font-size="13" text-anchor="middle">return False, &quot;Format email tidak valid&quot;</text>
+<text x="580" y="276" font-size="12" font-style="italic" fill="#444" text-anchor="middle">belum ada test</text>
+<polyline points="220,285 220,305" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="228" y="301" font-size="13" text-anchor="start">Ya</text>
+<polygon points="70,350 220,305 370,350 220,395" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="355.0" font-size="14" text-anchor="middle">password valid?</text>
+<polyline points="370,350 418,350" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="394" y="343" font-size="13" text-anchor="middle">Tidak</text>
+<rect x="420.0" y="330.0" width="320" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="580" y="355.0" font-size="13" text-anchor="middle">return False, &quot;Password minimal 6 karakter&quot;</text>
+<text x="580" y="386" font-size="12" font-style="italic" fill="#444" text-anchor="middle">belum ada test</text>
+<polyline points="220,395 220,415" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="228" y="411" font-size="13" text-anchor="start">Ya</text>
+<polygon points="70,460 220,415 370,460 220,505" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="456.5" font-size="14" text-anchor="middle">username sudah ada</text>
+<text x="220" y="473.5" font-size="14" text-anchor="middle">di database?</text>
+<polyline points="370,460 418,460" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="394" y="453" font-size="13" text-anchor="middle">Ya</text>
+<rect x="420.0" y="440.0" width="320" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="580" y="465.0" font-size="13" text-anchor="middle">return False, &quot;Username sudah terdaftar&quot;</text>
+<text x="580" y="496" font-size="12" font-style="italic" fill="#444" text-anchor="middle">diuji oleh test_register_duplicate_username</text>
+<polyline points="220,505 220,525" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="228" y="521" font-size="13" text-anchor="start">Tidak</text>
+<polygon points="70,570 220,525 370,570 220,615" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="566.5" font-size="14" text-anchor="middle">email sudah dipakai</text>
+<text x="220" y="583.5" font-size="14" text-anchor="middle">user lain?</text>
+<polyline points="370,570 418,570" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="394" y="563" font-size="13" text-anchor="middle">Ya</text>
+<rect x="420.0" y="550.0" width="320" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="580" y="575.0" font-size="13" text-anchor="middle">return False, &quot;Email sudah digunakan&quot;</text>
+<text x="580" y="606" font-size="12" font-style="italic" fill="#444" text-anchor="middle">diuji oleh test_register_duplicate_email</text>
+<polyline points="220,615 220,635" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="228" y="631" font-size="13" text-anchor="start">Tidak</text>
+<rect x="120.0" y="640.0" width="200" height="40" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="665.0" font-size="14" text-anchor="middle">save_users(users)</text>
+<polyline points="220,680 220,708" fill="none" stroke="#000" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="70.0" y="710.0" width="300" height="40" rx="20.0" fill="#fff" stroke="#000" stroke-width="1.5"/>
+<text x="220" y="735.0" font-size="13" text-anchor="middle">return True, &quot;Registrasi berhasil&quot;</text>
+<text x="220" y="766" font-size="12" font-style="italic" fill="#444" text-anchor="middle">diuji oleh test_register_success</text>
+<text x="380.0" y="805" font-size="13" text-anchor="middle">Gambar 5. Alur register_user dan test yang mengujinya</text>
 </svg>
