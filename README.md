@@ -249,6 +249,74 @@ self.assertTrue(validate_username("ab"))   # seharusnya assertFalse
 Hasilnya `AssertionError: False is not true`. Jadi saat test gagal, periksa dua kemungkinan:
 **kodenya yang salah**, atau **ekspektasi test-nya yang salah**.
 
+### Simulasi 4 — Test tanpa `@patch` (data asli ikut berubah)
+
+Integration test **tidak memakai** `users_db.json`. Setiap method test diberi:
+
+```python
+@patch('auth.logic_login_register.DB_PATH', TEST_DB_PATH)
+```
+
+Artinya: **selama test berjalan**, `DB_PATH` diganti dari `users_db.json` menjadi `test_users_db.json`.
+Setelah test selesai, `DB_PATH` otomatis kembali ke `users_db.json`.
+`setUp`/`tearDown` menghapus `test_users_db.json`, jadi setiap test selalu mulai dari database kosong.
+
+| Dijalankan dari | File database yang dipakai | Isi |
+|---|---|---|
+| `python3 app.py` | `users_db.json` | data asli (`admin`, `john_doe`, `alice_w`) |
+| Integration test (dengan `@patch`) | `test_users_db.json` | data test sementara, dihapus setelah test |
+
+<img src="docs/img/test_db_patch.svg" alt="Diagram: dengan @patch test memakai test_users_db.json dan selalu OK; tanpa @patch data masuk ke users_db.json dan run kedua FAIL" width="100%">
+
+**Cara simulasi** (backup dulu `users_db.json`, karena simulasi ini akan mengubah isinya):
+
+```bash
+cp users_db.json users_db.backup.json
+```
+
+1. Hapus atau beri komentar pada **semua** baris `@patch(...)` di `tests/test_auth_logic.py`.
+2. Jalankan test **dua kali**: `python3 -B -m unittest tests.test_auth_logic -v`
+
+**Run 1 → `OK`**, tetapi `users_db.json` sekarang berisi data test:
+
+```json
+{
+  "admin":   { ... },
+  "john_doe": { ... },
+  "alice_w": { ... },
+  "eve":     { "email": "eve@example.com", "password": "123456" },
+  "frank":   { ... },
+  "charlie": { ... },
+  "bob":     { ... },
+  "alice":   { "email": "alice@example.com", "password": "123456" }
+}
+```
+
+**Run 2 → `FAIL`**, karena `alice` sudah ada dari run 1:
+
+```
+======================================================================
+FAIL: test_register_success (tests.test_auth_logic.TestAuthLogic.test_register_success)
+----------------------------------------------------------------------
+  File ".../tests/test_auth_logic.py", line 21, in test_register_success
+    self.assertTrue(success)
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)
+```
+
+**Artinya:** test yang memakai data asli bisa lulus sekali, lalu gagal di run berikutnya, padahal kodenya tidak berubah.
+Inilah alasan integration test harus memakai **database terpisah** yang dibersihkan setiap kali test berjalan.
+
+Setelah selesai, kembalikan `@patch` dan pulihkan data asli:
+
+```bash
+mv users_db.backup.json users_db.json
+```
+
 ### Ringkasan status hasil test
 
 | Status | Arti |
